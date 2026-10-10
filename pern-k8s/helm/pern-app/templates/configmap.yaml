@@ -1,0 +1,12 @@
+# yaml-language-server: $schema=none
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pern-app-config
+  namespace: {{ .Release.Namespace }}
+data:
+  PG_HOST: database
+  PG_PORT: "5432"
+  PG_DATABASE: {{ .Values.postgres.database | quote }}
+  NODE_ENV: production
+  PORT: "5000"

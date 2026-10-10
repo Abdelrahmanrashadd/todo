@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=./values.schema.json
+namespace: "pern-app"
+
+frontend:
+  image: "pern-frontend:latest"
+  replicas: 2
+
+backend:
+  image: "pern-backend:latest"
+  replicas: 2
+
+postgres:
+  image: "postgres:17"
+  storage: "5Gi"
+  user: "todo_user"
+  database: "todos"
+  existingSecret: "database-credentials-external"
+
+ingress:
+  className: "traefik"
+  host: "todo.local"

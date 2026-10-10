@@ -1,0 +1,12 @@
+# yaml-language-server: $schema=none
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: database-init
+  namespace: {{ .Release.Namespace }}
+data:
+  database.sql: |
+    CREATE TABLE IF NOT EXISTS todo (
+      todo_id SERIAL PRIMARY KEY,
+      description VARCHAR(255)
+    );
